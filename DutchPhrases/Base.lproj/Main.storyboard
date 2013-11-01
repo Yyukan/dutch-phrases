@@ -44,6 +44,7 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="8nB-DX-fzi" id="zWj-T6-jbU"/>
                         <outlet property="tableView" destination="Phx-rs-Llz" id="m1d-em-Ixv"/>
                     </connections>
                 </viewController>

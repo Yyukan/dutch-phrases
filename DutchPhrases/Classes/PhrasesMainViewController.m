@@ -24,11 +24,21 @@
     return self;
 }
 
+- (void)loadView {
+    [super loadView];
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    self.searchController.delegate = self;
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
     // initial data load
     [self fetchedResultControllerInitialLoad];
 }
@@ -70,6 +80,48 @@
     }
 }
 
+- (NSFetchedResultsController *)fetchedResultsControllerWithSearch:(NSString *)searchString
+{
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+
+    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"phrase" ascending:YES];
+
+    NSPredicate *filterPredicate = nil;
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
+	[fetchRequest setEntity:entity];
+
+    NSMutableArray *predicateArray = [NSMutableArray array];
+    if (searchString.length)
+    {
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"phrase CONTAINS[cd] %@", searchString]];
+        if(filterPredicate)
+        {
+            filterPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:filterPredicate, [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray], nil]];
+        }
+        else
+        {
+            filterPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray];
+        }
+    }
+    [fetchRequest setPredicate:filterPredicate];
+    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:orderDescriptor, nil]];
+
+    
+	NSFetchedResultsController *resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    resultsController.delegate = self;
+    
+    NSError *error = nil;
+    if (![resultsController performFetch:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return resultsController;
+}
+
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil)
@@ -77,32 +129,62 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
-	[fetchRequest setEntity:entity];
-	
-    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"phrase" ascending:YES];
-	[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:orderDescriptor, nil]];
-    //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"domain == %@ AND status == %@", self.domain, STATUS_OCCUPATION_NORMAL]];
+    _fetchedResultsController = [self fetchedResultsControllerWithSearch:nil];
+    return _fetchedResultsController;
+}
 
-	NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-	
-    self.fetchedResultsController = fetchedResultsController;
-    _fetchedResultsController.delegate = self;
-	
-	return _fetchedResultsController;
+- (NSFetchedResultsController *)searchFetchedResultsController
+{
+    if (_searchFetchedResultsController != nil)
+    {
+        return _searchFetchedResultsController;
+    }
+    _searchFetchedResultsController = [self fetchedResultsControllerWithSearch:self.searchDisplayController.searchBar.text];
+    return _searchFetchedResultsController;
+}
+
+//- (NSFetchedResultsController *)fetchedResultsController
+//{
+//    if (_fetchedResultsController != nil)
+//    {
+//        return _fetchedResultsController;
+//    }
+//    
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
+//	[fetchRequest setEntity:entity];
+//	
+//    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"phrase" ascending:YES];
+//	[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:orderDescriptor, nil]];
+//    //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"domain == %@ AND status == %@", self.domain, STATUS_OCCUPATION_NORMAL]];
+//
+//	NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+//	
+//    self.fetchedResultsController = fetchedResultsController;
+//    _fetchedResultsController.delegate = self;
+//	
+//	return _fetchedResultsController;
+//}
+
+- (UITableView *)tableViewForController:(NSFetchedResultsController *)controller {
+    return controller == self.fetchedResultsController ? self.tableView : self.searchDisplayController.searchResultsTableView;
+}
+
+- (NSFetchedResultsController *)fetchedResultsControllerForTableView:(UITableView *)tableView
+{
+    return tableView == self.tableView ? self.fetchedResultsController : self.searchFetchedResultsController;
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     TRC_DBG(@"Before update [%i] entites", controller.fetchedObjects.count);
     
-    [self.tableView beginUpdates];
+    [[self tableViewForController:controller]  beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath
 {
-	UITableView *tableView = self.tableView;
+	UITableView *tableView = [self tableViewForController:controller];
     
 	switch(type)
     {
@@ -129,9 +211,25 @@
 	}
 }
 
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+{
+    UITableView *tableView = [self tableViewForController:controller];
+    switch(type)
+    {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView endUpdates];
+    [[self tableViewForController:controller] endUpdates];
     
     TRC_DBG(@"After update [%i] entities", controller.fetchedObjects.count);
 }
@@ -183,7 +281,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.fetchedResultsController.fetchedObjects.count;
+    return [self fetchedResultsControllerForTableView:tableView].fetchedObjects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -196,7 +294,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    Phrase *phrase = (Phrase *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    Phrase *phrase = (Phrase *)[[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
     
     [cell.detailTextLabel setText: phrase.translation];
     [cell.textLabel setText:phrase.phrase];
@@ -216,11 +314,63 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        Phrase *phrase = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        Phrase *phrase = [[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
 
         [self.managedObjectContext deleteObject:phrase];
         [[PersistenceManager sharedPersistenceManager] saveManagedContext];
         TRC_DBG(@"Removed phrase [%@]", phrase.phrase);
     }
 }
+
+#pragma mark - Search Bar
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSInteger)scope
+{
+    // update the filter, in this case just blow away the FRC and let lazy evaluation create another with the relevant search info
+    self.searchFetchedResultsController.delegate = nil;
+    self.searchFetchedResultsController = nil;
+    // if you care about the scope save off the index to be used by the serchFetchedResultsController
+    //self.savedScopeButtonIndex = scope;
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller willUnloadSearchResultsTableView:(UITableView *)tableView;
+{
+    TRC_ENTRY
+    self.searchFetchedResultsController.delegate = nil;
+    self.searchFetchedResultsController = nil;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    TRC_ENTRY
+    [self filterContentForSearchText:searchString
+                               scope:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
+    
+    return YES;
+}
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+{
+    TRC_ENTRY
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]
+                               scope:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
+    
+    return YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    TRC_DBG(@"Text %@", searchText)
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    TRC_ENTRY
+}
+
+-(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
+    TRC_ENTRY
+}
+
 @end
