@@ -28,6 +28,8 @@
 		F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74C4182435140060B25D /* PhraseAddViewController.m */; };
 		F45D74C718243A8B0060B25D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D74C618243A8B0060B25D /* CoreData.framework */; };
 		F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */; };
+		F45D74D0182440780060B25D /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CF182440780060B25D /* Phrase.m */; };
+		F45D74D3182441F20060B25D /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74D2182441F20060B25D /* PersistenceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		F45D74C4182435140060B25D /* PhraseAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseAddViewController.m; sourceTree = "<group>"; };
 		F45D74C618243A8B0060B25D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F45D74CB18243B540060B25D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F45D74CE182440780060B25D /* Phrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phrase.h; sourceTree = "<group>"; };
+		F45D74CF182440780060B25D /* Phrase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phrase.m; sourceTree = "<group>"; };
+		F45D74D1182441F20060B25D /* PersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistenceManager.h; sourceTree = "<group>"; };
+		F45D74D2182441F20060B25D /* PersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +142,7 @@
 		F45D748118241D170060B25D /* DutchPhrases */ = {
 			isa = PBXGroup;
 			children = (
+				F45D74CD182440450060B25D /* DataModel */,
 				F45D74B0182434B60060B25D /* Classes */,
 				F45D748A18241D170060B25D /* AppDelegate.h */,
 				F45D748B18241D170060B25D /* AppDelegate.m */,
@@ -178,7 +185,6 @@
 		F45D74B0182434B60060B25D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */,
 				F45D74B1182434B60060B25D /* Utils */,
 				F45D74C0182434E00060B25D /* PhrasesMainViewController.h */,
 				F45D74C1182434E00060B25D /* PhrasesMainViewController.m */,
@@ -219,6 +225,19 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		F45D74CD182440450060B25D /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */,
+				F45D74CE182440780060B25D /* Phrase.h */,
+				F45D74CF182440780060B25D /* Phrase.m */,
+				F45D74D1182441F20060B25D /* PersistenceManager.h */,
+				F45D74D2182441F20060B25D /* PersistenceManager.m */,
+			);
+			name = DataModel;
+			path = Classes/DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,9 +344,11 @@
 				F45D74BE182434B60060B25D /* StringUtils.m in Sources */,
 				F45D74BC182434B60060B25D /* CollectionUtils.m in Sources */,
 				F45D748818241D170060B25D /* main.m in Sources */,
+				F45D74D0182440780060B25D /* Phrase.m in Sources */,
 				F45D74C2182434E00060B25D /* PhrasesMainViewController.m in Sources */,
 				F45D74BD182434B60060B25D /* Logger.m in Sources */,
 				F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */,
+				F45D74D3182441F20060B25D /* PersistenceManager.m in Sources */,
 				F45D74BF182434B60060B25D /* UIUtils.m in Sources */,
 				F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */,
 			);
@@ -558,8 +579,9 @@
 				F45D74CB18243B540060B25D /* DataModel.xcdatamodel */,
 			);
 			currentVersion = F45D74CB18243B540060B25D /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
+			name = DataModel.xcdatamodeld;
+			path = DutchPhrases/Classes/DataModel.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */

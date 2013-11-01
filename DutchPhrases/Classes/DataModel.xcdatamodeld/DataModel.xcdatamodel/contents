@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Phrase" syncable="YES">
-        <attribute name="phrase" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="translation" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Phrase" representedClassName="Phrase" syncable="YES">
+        <attribute name="phrase" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="translation" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
         <element name="Phrase" positionX="160" positionY="192" width="128" height="73"/>

@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersistenceManager.h"
 #import "PhraseAddViewController.h"
 
-@interface PhrasesMainViewController : UIViewController <PhraseAddDelegate>
+@interface PhrasesMainViewController : UIViewController <PhraseAddDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
+
+// data management
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
 
 @end
