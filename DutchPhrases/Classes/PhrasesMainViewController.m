@@ -46,7 +46,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    _fetchedResultsController.delegate = nil;
+    _fetchedResultsController = nil;
+    _searchFetchedResultsController.delegate = nil;
+    _searchFetchedResultsController = nil;
+    _managedObjectContext = nil;
 }
 
 #pragma mark - Managed object context
@@ -142,29 +146,6 @@
     _searchFetchedResultsController = [self fetchedResultsControllerWithSearch:self.searchDisplayController.searchBar.text];
     return _searchFetchedResultsController;
 }
-
-//- (NSFetchedResultsController *)fetchedResultsController
-//{
-//    if (_fetchedResultsController != nil)
-//    {
-//        return _fetchedResultsController;
-//    }
-//    
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
-//	[fetchRequest setEntity:entity];
-//	
-//    NSSortDescriptor *orderDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"phrase" ascending:YES];
-//	[fetchRequest setSortDescriptors:[NSArray arrayWithObjects:orderDescriptor, nil]];
-//    //[fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"domain == %@ AND status == %@", self.domain, STATUS_OCCUPATION_NORMAL]];
-//
-//	NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-//	
-//    self.fetchedResultsController = fetchedResultsController;
-//    _fetchedResultsController.delegate = self;
-//	
-//	return _fetchedResultsController;
-//}
 
 - (UITableView *)tableViewForController:(NSFetchedResultsController *)controller {
     return controller == self.fetchedResultsController ? self.tableView : self.searchDisplayController.searchResultsTableView;
@@ -320,6 +301,11 @@
         [[PersistenceManager sharedPersistenceManager] saveManagedContext];
         TRC_DBG(@"Removed phrase [%@]", phrase.phrase);
     }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0;
 }
 
 #pragma mark - Search Bar
