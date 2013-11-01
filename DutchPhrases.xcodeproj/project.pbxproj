@@ -14,13 +14,20 @@
 		F45D748818241D170060B25D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D748718241D170060B25D /* main.m */; };
 		F45D748C18241D170060B25D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D748B18241D170060B25D /* AppDelegate.m */; };
 		F45D748F18241D170060B25D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F45D748D18241D170060B25D /* Main.storyboard */; };
-		F45D749218241D170060B25D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D749118241D170060B25D /* ViewController.m */; };
 		F45D749418241D170060B25D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F45D749318241D170060B25D /* Images.xcassets */; };
 		F45D749B18241D170060B25D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D749A18241D170060B25D /* XCTest.framework */; };
 		F45D749C18241D170060B25D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D747B18241D170060B25D /* Foundation.framework */; };
 		F45D749D18241D170060B25D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D747F18241D170060B25D /* UIKit.framework */; };
 		F45D74A518241D170060B25D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F45D74A318241D170060B25D /* InfoPlist.strings */; };
 		F45D74A718241D170060B25D /* DutchPhrasesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74A618241D170060B25D /* DutchPhrasesTests.m */; };
+		F45D74BC182434B60060B25D /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74B3182434B60060B25D /* CollectionUtils.m */; };
+		F45D74BD182434B60060B25D /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74B6182434B60060B25D /* Logger.m */; };
+		F45D74BE182434B60060B25D /* StringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74B8182434B60060B25D /* StringUtils.m */; };
+		F45D74BF182434B60060B25D /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74BB182434B60060B25D /* UIUtils.m */; };
+		F45D74C2182434E00060B25D /* PhrasesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74C1182434E00060B25D /* PhrasesMainViewController.m */; };
+		F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74C4182435140060B25D /* PhraseAddViewController.m */; };
+		F45D74C718243A8B0060B25D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D74C618243A8B0060B25D /* CoreData.framework */; };
+		F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +52,28 @@
 		F45D748A18241D170060B25D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F45D748B18241D170060B25D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F45D748E18241D170060B25D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F45D749018241D170060B25D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F45D749118241D170060B25D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F45D749318241D170060B25D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F45D749918241D170060B25D /* DutchPhrasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DutchPhrasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45D749A18241D170060B25D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F45D74A218241D170060B25D /* DutchPhrasesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DutchPhrasesTests-Info.plist"; sourceTree = "<group>"; };
 		F45D74A418241D170060B25D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F45D74A618241D170060B25D /* DutchPhrasesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DutchPhrasesTests.m; sourceTree = "<group>"; };
+		F45D74B2182434B60060B25D /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
+		F45D74B3182434B60060B25D /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
+		F45D74B4182434B60060B25D /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		F45D74B5182434B60060B25D /* Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logger.h; sourceTree = "<group>"; };
+		F45D74B6182434B60060B25D /* Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
+		F45D74B7182434B60060B25D /* StringUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringUtils.h; sourceTree = "<group>"; };
+		F45D74B8182434B60060B25D /* StringUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringUtils.m; sourceTree = "<group>"; };
+		F45D74B9182434B60060B25D /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		F45D74BA182434B60060B25D /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
+		F45D74BB182434B60060B25D /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
+		F45D74C0182434E00060B25D /* PhrasesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhrasesMainViewController.h; sourceTree = "<group>"; };
+		F45D74C1182434E00060B25D /* PhrasesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhrasesMainViewController.m; sourceTree = "<group>"; };
+		F45D74C3182435140060B25D /* PhraseAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseAddViewController.h; sourceTree = "<group>"; };
+		F45D74C4182435140060B25D /* PhraseAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseAddViewController.m; sourceTree = "<group>"; };
+		F45D74C618243A8B0060B25D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F45D74CB18243B540060B25D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45D74C718243A8B0060B25D /* CoreData.framework in Frameworks */,
 				F45D747E18241D170060B25D /* CoreGraphics.framework in Frameworks */,
 				F45D748018241D170060B25D /* UIKit.framework in Frameworks */,
 				F45D747C18241D170060B25D /* Foundation.framework in Frameworks */,
@@ -82,6 +104,7 @@
 		F45D746F18241D170060B25D = {
 			isa = PBXGroup;
 			children = (
+				F45D74C818243AAF0060B25D /* Resources */,
 				F45D748118241D170060B25D /* DutchPhrases */,
 				F45D74A018241D170060B25D /* DutchPhrasesTests */,
 				F45D747A18241D170060B25D /* Frameworks */,
@@ -101,6 +124,7 @@
 		F45D747A18241D170060B25D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F45D74C618243A8B0060B25D /* CoreData.framework */,
 				F45D747B18241D170060B25D /* Foundation.framework */,
 				F45D747D18241D170060B25D /* CoreGraphics.framework */,
 				F45D747F18241D170060B25D /* UIKit.framework */,
@@ -112,11 +136,10 @@
 		F45D748118241D170060B25D /* DutchPhrases */ = {
 			isa = PBXGroup;
 			children = (
+				F45D74B0182434B60060B25D /* Classes */,
 				F45D748A18241D170060B25D /* AppDelegate.h */,
 				F45D748B18241D170060B25D /* AppDelegate.m */,
 				F45D748D18241D170060B25D /* Main.storyboard */,
-				F45D749018241D170060B25D /* ViewController.h */,
-				F45D749118241D170060B25D /* ViewController.m */,
 				F45D749318241D170060B25D /* Images.xcassets */,
 				F45D748218241D170060B25D /* Supporting Files */,
 			);
@@ -150,6 +173,52 @@
 				F45D74A318241D170060B25D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F45D74B0182434B60060B25D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */,
+				F45D74B1182434B60060B25D /* Utils */,
+				F45D74C0182434E00060B25D /* PhrasesMainViewController.h */,
+				F45D74C1182434E00060B25D /* PhrasesMainViewController.m */,
+				F45D74C3182435140060B25D /* PhraseAddViewController.h */,
+				F45D74C4182435140060B25D /* PhraseAddViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F45D74B1182434B60060B25D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F45D74B2182434B60060B25D /* CollectionUtils.h */,
+				F45D74B3182434B60060B25D /* CollectionUtils.m */,
+				F45D74B4182434B60060B25D /* Common.h */,
+				F45D74B5182434B60060B25D /* Logger.h */,
+				F45D74B6182434B60060B25D /* Logger.m */,
+				F45D74B7182434B60060B25D /* StringUtils.h */,
+				F45D74B8182434B60060B25D /* StringUtils.m */,
+				F45D74B9182434B60060B25D /* SynthesizeSingleton.h */,
+				F45D74BA182434B60060B25D /* UIUtils.h */,
+				F45D74BB182434B60060B25D /* UIUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F45D74C818243AAF0060B25D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F45D74C918243AAF0060B25D /* Images */,
+			);
+			name = Resources;
+			path = DutchPhrases/Resources;
+			sourceTree = "<group>";
+		};
+		F45D74C918243AAF0060B25D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +268,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Oleksandr Shtykhno";
 				TargetAttributes = {
+					F45D747718241D170060B25D = {
+						DevelopmentTeam = G6LUHT349V;
+					};
 					F45D749818241D170060B25D = {
 						TestTargetID = F45D747718241D170060B25D;
 					};
@@ -249,9 +321,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F45D749218241D170060B25D /* ViewController.m in Sources */,
 				F45D748C18241D170060B25D /* AppDelegate.m in Sources */,
+				F45D74BE182434B60060B25D /* StringUtils.m in Sources */,
+				F45D74BC182434B60060B25D /* CollectionUtils.m in Sources */,
 				F45D748818241D170060B25D /* main.m in Sources */,
+				F45D74C2182434E00060B25D /* PhrasesMainViewController.m in Sources */,
+				F45D74BD182434B60060B25D /* Logger.m in Sources */,
+				F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */,
+				F45D74BF182434B60060B25D /* UIUtils.m in Sources */,
+				F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +456,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DutchPhrases/DutchPhrases-Prefix.pch";
 				INFOPLIST_FILE = "DutchPhrases/DutchPhrases-Info.plist";
@@ -391,6 +470,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DutchPhrases/DutchPhrases-Prefix.pch";
 				INFOPLIST_FILE = "DutchPhrases/DutchPhrases-Info.plist";
@@ -470,6 +550,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F45D74CB18243B540060B25D /* DataModel.xcdatamodel */,
+			);
+			currentVersion = F45D74CB18243B540060B25D /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F45D747018241D170060B25D /* Project object */;
 }

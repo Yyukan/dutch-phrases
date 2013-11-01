@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PhrasesMainViewController.h
 //  DutchPhrases
 //
 //  Created by Oleksandr Shtykhno on 01/11/2013.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PhraseAddViewController.h"
 
-@interface ViewController : UIViewController
+@interface PhrasesMainViewController : UIViewController <PhraseAddDelegate>
 
 @end
