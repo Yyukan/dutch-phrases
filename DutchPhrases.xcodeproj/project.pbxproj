@@ -30,6 +30,13 @@
 		F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */; };
 		F45D74D0182440780060B25D /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CF182440780060B25D /* Phrase.m */; };
 		F45D74D3182441F20060B25D /* PersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74D2182441F20060B25D /* PersistenceManager.m */; };
+		F4A2053F1825496800D4317F /* PhraseCard.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A2053E1825496800D4317F /* PhraseCard.m */; };
+		F4A205411825557F00D4317F /* PhraseCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A205401825557F00D4317F /* PhraseCard.xib */; };
+		F4A205431825708D00D4317F /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A205421825708D00D4317F /* background.png */; };
+		F4A2054518258FBD00D4317F /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A2054418258FBD00D4317F /* chat.png */; };
+		F4A20547182592BF00D4317F /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A20546182592BF00D4317F /* chat@2x.png */; };
+		F4A2054A1825931100D4317F /* bookmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A205481825931100D4317F /* bookmark.png */; };
+		F4A2054B1825931100D4317F /* bookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A205491825931100D4317F /* bookmark@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +87,14 @@
 		F45D74CF182440780060B25D /* Phrase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phrase.m; sourceTree = "<group>"; };
 		F45D74D1182441F20060B25D /* PersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistenceManager.h; sourceTree = "<group>"; };
 		F45D74D2182441F20060B25D /* PersistenceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceManager.m; sourceTree = "<group>"; };
+		F4A2053D1825496800D4317F /* PhraseCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseCard.h; sourceTree = "<group>"; };
+		F4A2053E1825496800D4317F /* PhraseCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseCard.m; sourceTree = "<group>"; };
+		F4A205401825557F00D4317F /* PhraseCard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhraseCard.xib; path = ../PhraseCard.xib; sourceTree = "<group>"; };
+		F4A205421825708D00D4317F /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		F4A2054418258FBD00D4317F /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chat.png; sourceTree = "<group>"; };
+		F4A20546182592BF00D4317F /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
+		F4A205481825931100D4317F /* bookmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookmark.png; sourceTree = "<group>"; };
+		F4A205491825931100D4317F /* bookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bookmark@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +161,7 @@
 				F45D74B0182434B60060B25D /* Classes */,
 				F45D748A18241D170060B25D /* AppDelegate.h */,
 				F45D748B18241D170060B25D /* AppDelegate.m */,
+				F4A205401825557F00D4317F /* PhraseCard.xib */,
 				F45D748D18241D170060B25D /* Main.storyboard */,
 				F45D749318241D170060B25D /* Images.xcassets */,
 				F45D748218241D170060B25D /* Supporting Files */,
@@ -190,6 +206,8 @@
 				F45D74C1182434E00060B25D /* PhrasesMainViewController.m */,
 				F45D74C3182435140060B25D /* PhraseAddViewController.h */,
 				F45D74C4182435140060B25D /* PhraseAddViewController.m */,
+				F4A2053D1825496800D4317F /* PhraseCard.h */,
+				F4A2053E1825496800D4317F /* PhraseCard.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -223,6 +241,11 @@
 		F45D74C918243AAF0060B25D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F4A205481825931100D4317F /* bookmark.png */,
+				F4A205491825931100D4317F /* bookmark@2x.png */,
+				F4A20546182592BF00D4317F /* chat@2x.png */,
+				F4A2054418258FBD00D4317F /* chat.png */,
+				F4A205421825708D00D4317F /* background.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -319,9 +342,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A20547182592BF00D4317F /* chat@2x.png in Resources */,
+				F4A205411825557F00D4317F /* PhraseCard.xib in Resources */,
+				F4A205431825708D00D4317F /* background.png in Resources */,
 				F45D749418241D170060B25D /* Images.xcassets in Resources */,
 				F45D748618241D170060B25D /* InfoPlist.strings in Resources */,
+				F4A2054B1825931100D4317F /* bookmark@2x.png in Resources */,
+				F4A2054A1825931100D4317F /* bookmark.png in Resources */,
 				F45D748F18241D170060B25D /* Main.storyboard in Resources */,
+				F4A2054518258FBD00D4317F /* chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +377,7 @@
 				F45D74C2182434E00060B25D /* PhrasesMainViewController.m in Sources */,
 				F45D74BD182434B60060B25D /* Logger.m in Sources */,
 				F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */,
+				F4A2053F1825496800D4317F /* PhraseCard.m in Sources */,
 				F45D74D3182441F20060B25D /* PersistenceManager.m in Sources */,
 				F45D74BF182434B60060B25D /* UIUtils.m in Sources */,
 				F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */,
@@ -561,6 +591,7 @@
 				F45D74AC18241D170060B25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F45D74AD18241D170060B25D /* Build configuration list for PBXNativeTarget "DutchPhrasesTests" */ = {
 			isa = XCConfigurationList;
@@ -569,6 +600,7 @@
 				F45D74AF18241D170060B25D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

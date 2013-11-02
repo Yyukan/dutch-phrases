@@ -8,6 +8,7 @@
 #import "Common.h"
 #import "PhrasesMainViewController.h"
 #import "Phrase.h"
+#import "PhraseCard.h"
 
 @interface PhrasesMainViewController ()
 
@@ -36,11 +37,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // change search bar text color
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    
+    [UIUtils setBackgroundImage:self.view image:@"background"];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
-    // initial data load
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView.backgroundColor = [UIColor clearColor];
+    [self.tableView registerNib:[UINib nibWithNibName:@"PhraseCard" bundle:nil] forCellReuseIdentifier:@"PhraseCard"];
+
+    self.searchDisplayController.searchResultsTableView.backgroundColor = [UIColor clearColor];
+    [UIUtils setBackgroundImage:self.searchDisplayController.searchResultsTableView image:@"background"];
+    [self.searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"PhraseCard" bundle:nil] forCellReuseIdentifier:@"PhraseCard"];
+
+    self.searchDisplayController.searchResultsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [self fetchedResultControllerInitialLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning
@@ -265,20 +284,23 @@
     return [self fetchedResultsControllerForTableView:tableView].fetchedObjects.count;
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    TRC_ENTRY
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PhraseCell";
+    static NSString *CellIdentifier = @"PhraseCard";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
+    PhraseCard *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    if (cell == nil) {
+        cell = [[PhraseCard alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+     }
     
     Phrase *phrase = (Phrase *)[[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
     
-    [cell.detailTextLabel setText: phrase.translation];
-    [cell.textLabel setText:phrase.phrase];
+    [cell.translationText setText: phrase.translation];
+    [cell.phraseLabel setText:phrase.phrase];
     
     return cell;
 }
@@ -305,7 +327,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0;
+    return 120.0;
 }
 
 #pragma mark - Search Bar
@@ -348,15 +370,6 @@
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     TRC_DBG(@"Text %@", searchText)
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    TRC_ENTRY
-}
-
--(void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller{
-    TRC_ENTRY
 }
 
 @end
