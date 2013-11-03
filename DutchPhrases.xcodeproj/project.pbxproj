@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43E124E1826518100F3CF9A /* PhraseCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43E124C1826518100F3CF9A /* PhraseCardController.m */; };
+		F43E124F1826518100F3CF9A /* PhraseCardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43E124D1826518100F3CF9A /* PhraseCardController.xib */; };
+		F43E12521826561F00F3CF9A /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = F43E12501826561F00F3CF9A /* plus.png */; };
+		F43E12531826561F00F3CF9A /* plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F43E12511826561F00F3CF9A /* plus@2x.png */; };
 		F45D747C18241D170060B25D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D747B18241D170060B25D /* Foundation.framework */; };
 		F45D747E18241D170060B25D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D747D18241D170060B25D /* CoreGraphics.framework */; };
 		F45D748018241D170060B25D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D747F18241D170060B25D /* UIKit.framework */; };
@@ -25,7 +29,6 @@
 		F45D74BE182434B60060B25D /* StringUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74B8182434B60060B25D /* StringUtils.m */; };
 		F45D74BF182434B60060B25D /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74BB182434B60060B25D /* UIUtils.m */; };
 		F45D74C2182434E00060B25D /* PhrasesMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74C1182434E00060B25D /* PhrasesMainViewController.m */; };
-		F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74C4182435140060B25D /* PhraseAddViewController.m */; };
 		F45D74C718243A8B0060B25D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45D74C618243A8B0060B25D /* CoreData.framework */; };
 		F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CA18243B530060B25D /* DataModel.xcdatamodeld */; };
 		F45D74D0182440780060B25D /* Phrase.m in Sources */ = {isa = PBXBuildFile; fileRef = F45D74CF182440780060B25D /* Phrase.m */; };
@@ -50,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F43E124B1826518100F3CF9A /* PhraseCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseCardController.h; sourceTree = "<group>"; };
+		F43E124C1826518100F3CF9A /* PhraseCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseCardController.m; sourceTree = "<group>"; };
+		F43E124D1826518100F3CF9A /* PhraseCardController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhraseCardController.xib; path = Classes/PhraseCardController.xib; sourceTree = "<group>"; };
+		F43E12501826561F00F3CF9A /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus.png; sourceTree = "<group>"; };
+		F43E12511826561F00F3CF9A /* plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus@2x.png"; sourceTree = "<group>"; };
 		F45D747818241D170060B25D /* DutchPhrases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DutchPhrases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F45D747B18241D170060B25D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F45D747D18241D170060B25D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,8 +87,6 @@
 		F45D74BB182434B60060B25D /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
 		F45D74C0182434E00060B25D /* PhrasesMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhrasesMainViewController.h; sourceTree = "<group>"; };
 		F45D74C1182434E00060B25D /* PhrasesMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhrasesMainViewController.m; sourceTree = "<group>"; };
-		F45D74C3182435140060B25D /* PhraseAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhraseAddViewController.h; sourceTree = "<group>"; };
-		F45D74C4182435140060B25D /* PhraseAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhraseAddViewController.m; sourceTree = "<group>"; };
 		F45D74C618243A8B0060B25D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F45D74CB18243B540060B25D /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		F45D74CE182440780060B25D /* Phrase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phrase.h; sourceTree = "<group>"; };
@@ -161,6 +167,7 @@
 				F45D74B0182434B60060B25D /* Classes */,
 				F45D748A18241D170060B25D /* AppDelegate.h */,
 				F45D748B18241D170060B25D /* AppDelegate.m */,
+				F43E124D1826518100F3CF9A /* PhraseCardController.xib */,
 				F4A205401825557F00D4317F /* PhraseCard.xib */,
 				F45D748D18241D170060B25D /* Main.storyboard */,
 				F45D749318241D170060B25D /* Images.xcassets */,
@@ -204,10 +211,10 @@
 				F45D74B1182434B60060B25D /* Utils */,
 				F45D74C0182434E00060B25D /* PhrasesMainViewController.h */,
 				F45D74C1182434E00060B25D /* PhrasesMainViewController.m */,
-				F45D74C3182435140060B25D /* PhraseAddViewController.h */,
-				F45D74C4182435140060B25D /* PhraseAddViewController.m */,
 				F4A2053D1825496800D4317F /* PhraseCard.h */,
 				F4A2053E1825496800D4317F /* PhraseCard.m */,
+				F43E124B1826518100F3CF9A /* PhraseCardController.h */,
+				F43E124C1826518100F3CF9A /* PhraseCardController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -241,6 +248,8 @@
 		F45D74C918243AAF0060B25D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				F43E12501826561F00F3CF9A /* plus.png */,
+				F43E12511826561F00F3CF9A /* plus@2x.png */,
 				F4A205481825931100D4317F /* bookmark.png */,
 				F4A205491825931100D4317F /* bookmark@2x.png */,
 				F4A20546182592BF00D4317F /* chat@2x.png */,
@@ -342,6 +351,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F43E124F1826518100F3CF9A /* PhraseCardController.xib in Resources */,
 				F4A20547182592BF00D4317F /* chat@2x.png in Resources */,
 				F4A205411825557F00D4317F /* PhraseCard.xib in Resources */,
 				F4A205431825708D00D4317F /* background.png in Resources */,
@@ -349,6 +359,8 @@
 				F45D748618241D170060B25D /* InfoPlist.strings in Resources */,
 				F4A2054B1825931100D4317F /* bookmark@2x.png in Resources */,
 				F4A2054A1825931100D4317F /* bookmark.png in Resources */,
+				F43E12531826561F00F3CF9A /* plus@2x.png in Resources */,
+				F43E12521826561F00F3CF9A /* plus.png in Resources */,
 				F45D748F18241D170060B25D /* Main.storyboard in Resources */,
 				F4A2054518258FBD00D4317F /* chat.png in Resources */,
 			);
@@ -379,8 +391,8 @@
 				F45D74CC18243B540060B25D /* DataModel.xcdatamodeld in Sources */,
 				F4A2053F1825496800D4317F /* PhraseCard.m in Sources */,
 				F45D74D3182441F20060B25D /* PersistenceManager.m in Sources */,
+				F43E124E1826518100F3CF9A /* PhraseCardController.m in Sources */,
 				F45D74BF182434B60060B25D /* UIUtils.m in Sources */,
-				F45D74C5182435140060B25D /* PhraseAddViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

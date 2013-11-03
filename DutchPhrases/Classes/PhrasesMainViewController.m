@@ -235,38 +235,47 @@
 }
 
 
-#pragma mark - Segue activity
+#pragma mark - PhraseCardDelegate
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"PhraseAdd"]) {
-        
-        UINavigationController *navigationController = segue.destinationViewController;
-        PhraseAddViewController *controller = [navigationController viewControllers][0];
-        controller.delegate = self;
-    }
+- (IBAction)addCard:(id)sender {
+    PhraseCardController *cardController = [[PhraseCardController alloc] initWithNibName:@"PhraseCardController" bundle:nil];
+    
+    TRC_DBG(@"Controller %@", cardController)
+    
+    cardController.delegate = self;
+    
+    [cardController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    [self presentViewController:cardController animated:YES completion:^{
+        NSLog(@"completed");
+    }];
 }
 
-#pragma mark - PhraseAddDelegate
 
-- (void)phraseSave:(PhraseAddViewController *)controller
+- (void)phraseSave:(PhraseCardController *)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
     TRC_DBG(@"Phrase %@", controller.phraseTextField.text);
     TRC_DBG(@"Translation %@", controller.translationTextView.text)
     
-    // create managed entity
-    Phrase *phrase = [NSEntityDescription insertNewObjectForEntityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
-    phrase.phrase = controller.phraseTextField.text;
-    phrase.translation = controller.translationTextView.text;
-    
+    Phrase *phrase = nil;
+    if (controller.phrase) {
+        phrase = controller.phrase;
+        phrase.phrase = controller.phraseTextField.text;
+        phrase.translation = controller.translationTextView.text;
+    } else {
+        // create managed entity
+        phrase = [NSEntityDescription insertNewObjectForEntityForName:@"Phrase" inManagedObjectContext:self.managedObjectContext];
+        phrase.phrase = controller.phraseTextField.text;
+        phrase.translation = controller.translationTextView.text;
+    }
     // save managed context when insert new record
     [[PersistenceManager sharedPersistenceManager] saveManagedContext];
     TRC_DBG(@"Phrase [%@] has been saved...", controller.phraseTextField.text);
 }
 
-- (void)phraseCancel:(PhraseAddViewController *)controller
+- (void)phraseCancel:(PhraseCardController *)controller
 {
     TRC_ENTRY
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -284,9 +293,22 @@
     return [self fetchedResultsControllerForTableView:tableView].fetchedObjects.count;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TRC_ENTRY
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Phrase *phrase = (Phrase *)[[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
+    
+    PhraseCardController *cardController = [[PhraseCardController alloc] initWithNibName:@"PhraseCardController" bundle:nil];
+    
+    TRC_DBG(@"Controller %@", cardController)
+    [cardController initPhrase:phrase];
+    
+    cardController.delegate = self;
+    
+    [cardController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    [self presentViewController:cardController animated:YES completion:^{
+        NSLog(@"completed");
+    }];
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PhraseCard";

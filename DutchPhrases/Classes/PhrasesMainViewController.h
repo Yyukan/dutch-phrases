@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PersistenceManager.h"
-#import "PhraseAddViewController.h"
+#import "PhraseCardController.h"
 
-@interface PhrasesMainViewController : UIViewController <PhraseAddDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface PhrasesMainViewController : UIViewController <PhraseCardDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
+@property (nonatomic, weak) IBOutlet UIButton *addCard;
 @property (nonatomic, weak) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 
@@ -22,4 +23,5 @@
 @property (nonatomic, strong) NSFetchedResultsController *searchFetchedResultsController;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 
+- (IBAction)addCard:(id)sender;
 @end
