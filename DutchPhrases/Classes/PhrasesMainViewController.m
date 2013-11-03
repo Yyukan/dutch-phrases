@@ -246,7 +246,7 @@
     
     [cardController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     
-    [self presentViewController:cardController animated:YES completion:^{
+    [self presentViewController:cardController animated:NO completion:^{
         NSLog(@"completed");
     }];
 }
@@ -304,7 +304,7 @@
     cardController.delegate = self;
     
     [cardController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    [self presentViewController:cardController animated:YES completion:^{
+    [self presentViewController:cardController animated:NO completion:^{
         NSLog(@"completed");
     }];
 }
