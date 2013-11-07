@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
 @property (weak, nonatomic) IBOutlet UILabel *phraseLabel;
+@property (weak, nonatomic) IBOutlet UILabel *topWord;
 @property (weak, nonatomic) IBOutlet UITextView *translationText;
 
 @end

@@ -23,8 +23,8 @@
     self.mainView.layer.cornerRadius = 5;
     self.mainView.layer.masksToBounds = YES;
     self.mainView.backgroundColor = RGB(255, 228, 196);
-    self.topView.backgroundColor = RGB(255, 228, 196	);
-    self.buttomView.backgroundColor = RGB(218, 80, 40);
+    self.buttomView.backgroundColor = RGB(255, 228, 196);
+    self.topView.backgroundColor = RGB(218, 80, 40);
     
     self.backgroundColor = [UIColor clearColor];
     self.backgroundView = [UIView new];

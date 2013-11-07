@@ -323,6 +323,7 @@
     
     [cell.translationText setText: phrase.translation];
     [cell.phraseLabel setText:phrase.phrase];
+    [cell.topWord setText:[phrase.phrase componentsSeparatedByString:@" "][0]];
     
     return cell;
 }

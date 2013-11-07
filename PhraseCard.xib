@@ -20,6 +20,15 @@
                             <view alpha="0.94999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9u-n3-hYf" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="305" height="20"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGZ-MM-Y2P" userLabel="topWord">
+                                        <rect key="frame" x="7" y="-1" width="285" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWd-kS-ebd" userLabel="buttonView">
@@ -28,7 +37,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phrase" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vf-YM-zuO" userLabel="phraseLabel">
-                                <rect key="frame" x="8" y="20" width="286" height="21"/>
+                                <rect key="frame" x="8" y="25" width="286" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,6 +60,7 @@
                 <outlet property="mainView" destination="myg-Sy-QGp" id="Ovy-n9-6xS"/>
                 <outlet property="phraseLabel" destination="4Vf-YM-zuO" id="yK3-Be-2T3"/>
                 <outlet property="topView" destination="F9u-n3-hYf" id="dkV-gH-3ei"/>
+                <outlet property="topWord" destination="YGZ-MM-Y2P" id="Q3B-BJ-VTQ"/>
                 <outlet property="translationText" destination="IhH-xW-kIo" id="MCo-I9-PSY"/>
             </connections>
         </tableViewCell>
